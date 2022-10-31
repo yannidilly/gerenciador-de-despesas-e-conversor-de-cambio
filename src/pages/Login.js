@@ -1,4 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+import { login } from '../redux/actions';
 import '../style/Login.css';
 
 class Login extends React.Component {
@@ -23,10 +27,11 @@ class Login extends React.Component {
   };
 
   onClickButton = () => {
-    const { email, password } = this.state;
+    const { email } = this.state;
+    const { dispatch, history: { push } } = this.props;
     // jogar o state do componente para o globalState
-    console.log(email);
-    console.log(password);
+    dispatch(login(email));
+    push('/carteira');
   };
 
   onInputChange = (event) => {
@@ -72,4 +77,13 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+const mapStateToProps = (globalState) => ({
+  email: globalState.user.email,
+});
+
+Login.propTypes = {
+  dispatch: PropTypes.func,
+  push: PropTypes.func,
+}.isRequired;
+
+export default connect(mapStateToProps)(Login);
