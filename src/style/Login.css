@@ -1,14 +1,14 @@
+/*
 .login-page {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  height: 96vh;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 96vh;
   justify-content: center;
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
 
-/* 
 .login-form {
   border: 1px solid red;
 }
