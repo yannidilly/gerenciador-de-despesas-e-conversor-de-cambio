@@ -29,7 +29,6 @@ class Login extends React.Component {
   onClickButton = () => {
     const { email } = this.state;
     const { dispatch, history: { push } } = this.props;
-    // jogar o state do componente para o globalState
     dispatch(login(email));
     push('/carteira');
   };
@@ -68,7 +67,7 @@ class Login extends React.Component {
               disabled={ disableButton }
               onClick={ this.onClickButton }
             >
-              Enviar
+              Entrar
             </button>
           </div>
         </form>
