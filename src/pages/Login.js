@@ -7,8 +7,20 @@ class Login extends React.Component {
     this.state = {
       email: '',
       password: '',
+      disableButton: true,
     };
   }
+
+  enableButton = () => {
+    const { email, password } = this.state;
+    const regex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+?$/i;
+    const passwordMinLength = 6;
+    if (password.length >= passwordMinLength && regex.test(email)) {
+      this.setState({ disableButton: false });
+    } else {
+      this.setState({ disableButton: true });
+    }
+  };
 
   onClickButton = () => {
     const { email, password } = this.state;
@@ -19,12 +31,13 @@ class Login extends React.Component {
 
   onInputChange = (event) => {
     const { name, value } = event.target;
-    this.setState({
+    this.setState(({
       [name]: value,
-    });
+    }), () => this.enableButton());
   };
 
   render() {
+    const { disableButton } = this.state;
     return (
       <section
         className="login-page"
@@ -47,6 +60,7 @@ class Login extends React.Component {
           <div>
             <button
               type="button"
+              disabled={ disableButton }
               onClick={ this.onClickButton }
             >
               Enviar
