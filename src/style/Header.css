@@ -15,7 +15,7 @@ header {
   min-width: 30%;
 }
 
-.email-info, .expense-info {
+.email-info , .expense-info {
   padding: 10px;
 }
 
@@ -23,6 +23,6 @@ header {
   display: flex;
 }
 
-.expense-text, .expense-quantity {
+.expense-text , .expense-quantity {
   padding-right: 10px;
 }
