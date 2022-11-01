@@ -1,0 +1,23 @@
+.wallet-form {
+  align-items: center;
+  background-color: rgb(119, 80, 51);
+  display: flex;
+  justify-content: space-around;
+}
+
+.wallet-form-input-div {
+  align-items: center;
+  display: flex;
+}
+
+.expense-register-input {
+  margin-left: 15px;
+  margin-right: 15px;
+  height: 15px;
+}
+
+.expense-register-select {
+  margin-left: 15px;
+  margin-right: 15px;
+  height: 20px;
+}
