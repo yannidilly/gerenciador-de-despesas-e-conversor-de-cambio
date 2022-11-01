@@ -1,7 +1,10 @@
 .wallet-header {
+  align-items: center;
   background-color: rgb(97, 25, 25);
   display: flex;
   justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .info-section {
@@ -9,7 +12,6 @@
   border: 1px solid white;
   display: flex;
   justify-content: space-between;
-  padding-right: 50px;
   min-width: 20%;
 }
 
