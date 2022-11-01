@@ -1,8 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 import Header from '../components/Header';
+import { getCurrenciesAct } from '../redux/actions';
 import '../style/Wallet.css';
 
 class Wallet extends React.Component {
+  async componentDidMount() {
+    const { dispatch } = this.props;
+    await dispatch(getCurrenciesAct());
+  }
+
   render() {
     return (
       <div>
@@ -62,4 +71,12 @@ class Wallet extends React.Component {
   }
 }
 
-export default Wallet;
+const mapStateToProps = (globalState) => ({
+  currencies: globalState.user.currencies,
+});
+
+Wallet.propTypes = {
+  dispatch: PropTypes.func,
+}.isRequired;
+
+export default connect(mapStateToProps)(Wallet);

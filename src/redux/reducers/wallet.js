@@ -1,9 +1,15 @@
+import { GET_CURRENCIES } from '../actions';
+
 const WALLET_INITIAL_STATE = {
-  walletTeste: 'teste',
+  currencies: [],
 };
 
 const walletReducer = (state = WALLET_INITIAL_STATE, action) => {
   switch (action.type) {
+  case GET_CURRENCIES:
+    return ({
+      ...state,
+    });
   default:
     return state;
   }
