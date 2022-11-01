@@ -9,7 +9,6 @@ header {
 
 .info-section {
   align-items: center;
-  border: 1px solid white;
   display: flex;
   justify-content: space-between;
   min-width: 30%;
