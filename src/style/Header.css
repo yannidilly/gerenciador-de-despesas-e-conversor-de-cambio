@@ -1,6 +1,6 @@
-.wallet-header {
+header {
   align-items: center;
-  background-color: rgb(97, 25, 25);
+  background-color: rgb(68, 17, 17);
   display: flex;
   justify-content: space-between;
   padding-left: 20px;
@@ -12,9 +12,17 @@
   border: 1px solid white;
   display: flex;
   justify-content: space-between;
-  min-width: 20%;
+  min-width: 30%;
 }
 
-.email-info, .cost-info {
+.email-info, .expense-info {
   padding: 10px;
+}
+
+.expense-info {
+  display: flex;
+}
+
+.expense-text, .expense-quantity {
+  padding-right: 10px;
 }
