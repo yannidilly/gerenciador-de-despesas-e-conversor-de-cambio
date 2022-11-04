@@ -16,7 +16,6 @@ export const receiveCurrencies = (currencies) => ({
 export const getCurrenciesAct = (dispatch) => async () => {
   try {
     const currencies = await getCurrencies();
-    console.log(currencies);
     dispatch(receiveCurrencies(currencies));
   } catch (error) {
     console.log(error);
