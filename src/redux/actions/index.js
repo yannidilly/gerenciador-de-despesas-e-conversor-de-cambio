@@ -13,7 +13,7 @@ export const receiveCurrencies = (curriencies) => ({
   curriencies,
 });
 
-const fetchCurriencies = async () => {
+const fetchCurriencies = () => async () => {
   try {
     const curriencies = await getCurrencies();
     console.log(curriencies);
