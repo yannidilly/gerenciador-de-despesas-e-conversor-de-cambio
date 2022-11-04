@@ -13,6 +13,7 @@ class Wallet extends React.Component {
   }
 
   render() {
+    const { currencies } = this.props;
     return (
       <div>
         <Header />
@@ -30,8 +31,11 @@ class Wallet extends React.Component {
               data-testid="currency-input"
               className="expense-register-select"
             >
-              <option>BRL</option>
-              <option>USD</option>
+              {
+                currencies.map((currencie, index) => (
+                  <option key={ index }>{currencie}</option>
+                ))
+              }
             </select>
           </div>
           <div className="wallet-form-input-div">
@@ -72,7 +76,7 @@ class Wallet extends React.Component {
 }
 
 const mapStateToProps = (globalState) => ({
-  currencies: globalState.user.currencies,
+  currencies: globalState.wallet.currencies,
 });
 
 Wallet.propTypes = {
