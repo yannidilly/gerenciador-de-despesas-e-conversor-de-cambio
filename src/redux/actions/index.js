@@ -8,18 +8,17 @@ export const login = (email) => ({
   email,
 });
 
-export const receiveCurrencies = (curriencies) => ({
+export const receiveCurrencies = (currencies) => ({
   type: GET_CURRENCIES,
-  curriencies,
+  currencies,
 });
 
-const fetchCurriencies = () => async () => {
+export const getCurrenciesAct = (dispatch) => async () => {
   try {
-    const curriencies = await getCurrencies();
-    console.log(curriencies);
+    const currencies = await getCurrencies();
+    console.log(currencies);
+    dispatch(receiveCurrencies(currencies));
   } catch (error) {
     console.log(error);
   }
 };
-
-export const getCurrenciesAct = () => fetchCurriencies();

@@ -9,7 +9,7 @@ import '../style/Wallet.css';
 class Wallet extends React.Component {
   async componentDidMount() {
     const { dispatch } = this.props;
-    await dispatch(getCurrenciesAct());
+    await dispatch(getCurrenciesAct(dispatch));
   }
 
   render() {
