@@ -28,9 +28,25 @@ class WalletForm extends Component {
     });
   };
 
+  actualExpenseFormat = () => {
+    const { value, description, currency, method, tag } = this.state;
+    const expenseFormated = {
+      id: '', // acrescentar id com base no id do último elemento +1 (para não repetir quando apagar elemento)
+      value,
+      description,
+      currency,
+      method,
+      tag,
+      exchangeRates: {
+        // usar getCurrencies
+      },
+    };
+    return expenseFormated;
+  };
+
   addExpenseInGlobalState = () => {
     const { dispatch, expenses } = this.props;
-    const actualExpense = this.state;
+    const actualExpense = this.actualExpenseFormat();
     if (expenses !== undefined) {
       expenses.push(actualExpense);
       dispatch(addExpense(expenses));
@@ -43,9 +59,6 @@ class WalletForm extends Component {
     this.addExpenseInGlobalState();
     this.setState({
       value: '',
-      currency: 'USD',
-      method: 'Dinheiro',
-      tag: 'Alimentação',
       description: '',
     });
   };
