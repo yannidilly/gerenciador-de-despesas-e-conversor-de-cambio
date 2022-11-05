@@ -2,6 +2,7 @@ import getCurrencies from '../../services/getCurrencies';
 
 export const LOGIN = 'LOGIN';
 export const GET_CURRENCIES = 'GET_CURRENCIES';
+export const ADD_EXPENSE = 'ADD_EXPENSE';
 
 export const login = (email) => ({
   type: LOGIN,
@@ -21,3 +22,8 @@ export const getCurrenciesAct = (dispatch) => async () => {
     console.log(error);
   }
 };
+
+export const addExpense = (expenses) => ({
+  type: ADD_EXPENSE,
+  expenses,
+});

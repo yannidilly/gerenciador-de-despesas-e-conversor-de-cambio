@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getCurrenciesAct } from '../redux/actions';
+import { addExpense, getCurrenciesAct } from '../redux/actions';
 import '../style/WalletForm.css';
 
 class WalletForm extends Component {
@@ -28,8 +28,19 @@ class WalletForm extends Component {
     });
   };
 
-  onClickExpenseButton = () => {
+  addExpenseInGlobalState = () => {
+    const { dispatch, expenses } = this.props;
+    const actualExpense = this.state;
+    if (expenses !== undefined) {
+      expenses.push(actualExpense);
+      dispatch(addExpense(expenses));
+    } else {
+      dispatch(addExpense([actualExpense]));
+    }
+  };
 
+  onClickExpenseButton = () => {
+    this.addExpenseInGlobalState();
   };
 
   render() {
@@ -118,6 +129,7 @@ class WalletForm extends Component {
 
 const mapStateToProps = (globalState) => ({
   currencies: globalState.wallet.currencies,
+  expenses: globalState.wallet.expenses,
 });
 
 WalletForm.propTypes = {
