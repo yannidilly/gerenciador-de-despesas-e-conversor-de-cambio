@@ -23,15 +23,9 @@ class WalletForm extends Component {
   }
 
   onInputChange = (event) => {
-    if (event.target.type === 'checkbox') {
-      this.setState({
-        [event.target.name]: event.target.checked,
-      });
-    } else {
-      this.setState({
-        [event.target.name]: event.target.value,
-      });
-    }
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
   };
 
   onClickExpenseButton = () => {
