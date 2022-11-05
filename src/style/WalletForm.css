@@ -10,7 +10,7 @@
   display: flex;
 }
 
-.expense-register-input, .expense-value-register-input {
+.expense-register-input , .expense-value-register-input {
   height: 15px;
   margin-left: 15px;
   margin-right: 15px;
