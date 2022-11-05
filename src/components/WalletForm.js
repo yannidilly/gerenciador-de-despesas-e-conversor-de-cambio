@@ -5,16 +5,41 @@ import { getCurrenciesAct } from '../redux/actions';
 import '../style/WalletForm.css';
 
 class WalletForm extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      value: '',
+      currency: 'USD',
+      method: 'Dinheiro',
+      tag: 'Alimentação',
+      description: '',
+    };
+  }
+
   async componentDidMount() {
     const { dispatch } = this.props;
     await dispatch(getCurrenciesAct(dispatch));
   }
+
+  onInputChange = (event) => {
+    if (event.target.type === 'checkbox') {
+      this.setState({
+        [event.target.name]: event.target.checked,
+      });
+    } else {
+      this.setState({
+        [event.target.name]: event.target.value,
+      });
+    }
+  };
 
   onClickExpenseButton = () => {
 
   };
 
   render() {
+    const { value, description, currency, method, tag } = this.state;
     const { currencies } = this.props;
     return (
       <form className="wallet-form">
@@ -23,6 +48,10 @@ class WalletForm extends Component {
           <input
             data-testid="value-input"
             className="expense-value-register-input"
+            name="value"
+            type="text"
+            value={ value }
+            onChange={ this.onInputChange }
           />
         </div>
         <div className="wallet-form-input-div">
@@ -30,6 +59,9 @@ class WalletForm extends Component {
           <select
             data-testid="currency-input"
             className="expense-register-select"
+            name="currency"
+            value={ currency }
+            onChange={ this.onInputChange }
           >
             {
               currencies.map((currencie, index) => (
@@ -43,6 +75,9 @@ class WalletForm extends Component {
           <select
             data-testid="method-input"
             className="expense-register-select"
+            name="method"
+            value={ method }
+            onChange={ this.onInputChange }
           >
             <option>Dinheiro</option>
             <option>Cartão de crédito</option>
@@ -54,6 +89,9 @@ class WalletForm extends Component {
           <select
             data-testid="tag-input"
             className="expense-register-select"
+            name="tag"
+            value={ tag }
+            onChange={ this.onInputChange }
           >
             <option>Alimentação</option>
             <option>Lazer</option>
@@ -67,6 +105,10 @@ class WalletForm extends Component {
           <input
             data-testid="description-input"
             className="expense-register-input"
+            name="description"
+            type="text"
+            value={ description }
+            onChange={ this.onInputChange }
           />
         </div>
         <button
