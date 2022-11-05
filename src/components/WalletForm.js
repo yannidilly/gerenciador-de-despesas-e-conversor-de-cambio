@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrenciesAct } from '../redux/actions';
-import '../style/Wallet.css';
+import '../style/WalletForm.css';
 
 class WalletForm extends Component {
   async componentDidMount() {
