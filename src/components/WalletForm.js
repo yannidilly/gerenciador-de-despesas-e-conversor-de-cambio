@@ -41,6 +41,13 @@ class WalletForm extends Component {
 
   onClickExpenseButton = () => {
     this.addExpenseInGlobalState();
+    this.setState({
+      value: '',
+      currency: 'USD',
+      method: 'Dinheiro',
+      tag: 'Alimentação',
+      description: '',
+    });
   };
 
   render() {
