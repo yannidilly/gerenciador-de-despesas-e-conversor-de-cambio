@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addExpense, getCurrenciesAct } from '../redux/actions';
 import '../style/WalletForm.css';
+import { getCurrencies } from '../services/getCurrencies';
 
 class WalletForm extends Component {
   constructor() {
@@ -37,9 +38,10 @@ class WalletForm extends Component {
     return 0;
   };
 
-  actualExpenseFormat = () => {
+  actualExpenseFormat = async () => {
     const { value, description, currency, method, tag } = this.state;
     const actualExpenseId = this.getActualExpenseId();
+    const exchangeRates = await getCurrencies();
     const expenseFormated = {
       id: actualExpenseId,
       value,
@@ -47,16 +49,14 @@ class WalletForm extends Component {
       currency,
       method,
       tag,
-      exchangeRates: {
-        // usar getCurrencies
-      },
+      exchangeRates,
     };
     return expenseFormated;
   };
 
-  addExpenseInGlobalState = () => {
+  addExpenseInGlobalState = async () => {
     const { dispatch, expenses } = this.props;
-    const actualExpense = this.actualExpenseFormat();
+    const actualExpense = await this.actualExpenseFormat();
     if (expenses !== undefined) {
       expenses.push(actualExpense);
       dispatch(addExpense(expenses));
