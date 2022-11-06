@@ -44,7 +44,7 @@ class WalletForm extends Component {
     const exchangeRates = await getCurrencies();
     const expenseFormated = {
       id: actualExpenseId,
-      value,
+      value: value * 100,
       description,
       currency,
       method,
@@ -69,7 +69,7 @@ class WalletForm extends Component {
     const { expenses } = this.props;
     const totalSpending = expenses
       .map((expense) => Number.parseInt(expense.value, 10))
-      .reduce((acc, cur) => acc + cur);
+      .reduce((acc, cur) => acc + cur) / 100;
     return totalSpending;
   };
 

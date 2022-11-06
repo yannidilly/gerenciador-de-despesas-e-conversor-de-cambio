@@ -26,7 +26,7 @@ class Header extends Component {
               className="expense-quantity"
               data-testid="total-field"
             >
-              { totalSpending }
+              { totalSpending.toFixed(2) }
             </p>
             <p data-testid="header-currency-field">BRL</p>
           </div>
