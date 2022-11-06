@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addExpense, getCurrenciesAct } from '../redux/actions';
+import { addExpense, getCurrenciesAct, updateTotalSpending } from '../redux/actions';
 import '../style/WalletForm.css';
 import { getCurrencies } from '../services/getCurrencies';
 
@@ -65,8 +65,20 @@ class WalletForm extends Component {
     }
   };
 
+  calculateTotalSpending = () => {
+    const { expenses } = this.props;
+    return 20;
+  };
+
+  addTotalExpensesInGlobalState = () => {
+    const { dispatch } = this.props;
+    const totalSpending = this.calculateTotalSpending();
+    dispatch(updateTotalSpending(totalSpending));
+  };
+
   onClickExpenseButton = () => {
     this.addExpenseInGlobalState();
+    this.addTotalExpensesInGlobalState();
     this.setState({
       value: '',
       description: '',
