@@ -7,11 +7,15 @@ const formatCurrencies = (currenciesObj) => {
   return currenciesArray;
 };
 
-const getCurrencies = async () => {
+export const getFormatedCurrencies = async () => {
   const response = await fetch(endPoint);
   const currencies = await response.json();
   const currenciesFormated = formatCurrencies(currencies);
   return currenciesFormated;
 };
 
-export default getCurrencies;
+export const getCurrencies = async () => {
+  const response = await fetch(endPoint);
+  const currencies = await response.json();
+  return currencies;
+};

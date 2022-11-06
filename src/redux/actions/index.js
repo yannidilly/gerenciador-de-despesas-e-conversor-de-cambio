@@ -1,4 +1,4 @@
-import getCurrencies from '../../services/getCurrencies';
+import { getFormatedCurrencies } from '../../services/getCurrencies';
 
 export const LOGIN = 'LOGIN';
 export const GET_CURRENCIES = 'GET_CURRENCIES';
@@ -16,7 +16,7 @@ export const receiveCurrencies = (currencies) => ({
 
 export const getCurrenciesAct = (dispatch) => async () => {
   try {
-    const currencies = await getCurrencies();
+    const currencies = await getFormatedCurrencies();
     dispatch(receiveCurrencies(currencies));
   } catch (error) {
     console.log(error);
