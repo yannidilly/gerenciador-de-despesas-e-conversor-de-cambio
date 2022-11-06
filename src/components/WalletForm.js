@@ -65,10 +65,16 @@ class WalletForm extends Component {
     }
   };
 
+  currencyConverter = (expenseObj) => {
+    const { value, currency, exchangeRates } = expenseObj;
+    const convertedValue = value * exchangeRates[currency].ask;
+    return convertedValue;
+  };
+
   calculateTotalSpending = () => {
     const { expenses } = this.props;
     const totalSpending = expenses
-      .map((expense) => Number.parseFloat(expense.value))
+      .map((expense) => Number.parseFloat(this.currencyConverter(expense)))
       .reduce((acc, cur) => acc + cur);
     return totalSpending;
   };
