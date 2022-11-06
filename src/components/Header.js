@@ -6,7 +6,7 @@ import '../style/Header.css';
 
 class Header extends Component {
   render() {
-    const { email } = this.props;
+    const { email, totalSpending } = this.props;
     return (
       <header>
         <h1>Gerenciador de Despesas</h1>
@@ -22,7 +22,12 @@ class Header extends Component {
             data-testid="total-field"
           >
             <p className="expense-text">Despesas totais:</p>
-            <p className="expense-quantity" data-testid="total-field">0</p>
+            <p
+              className="expense-quantity"
+              data-testid="total-field"
+            >
+              { totalSpending }
+            </p>
             <p data-testid="header-currency-field">BRL</p>
           </div>
         </section>
@@ -33,10 +38,12 @@ class Header extends Component {
 
 const mapStateToProps = (globalState) => ({
   email: globalState.user.email,
+  totalSpending: globalState.wallet.totalSpending,
 });
 
 Header.propTypes = {
   email: PropTypes.string,
+  totalSpending: PropTypes.number,
 }.isRequired;
 
 export default connect(mapStateToProps)(Header);
