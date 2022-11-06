@@ -2,7 +2,6 @@ import { GET_CURRENCIES, ADD_EXPENSE, UPDATE_TOTAL_SPENDING } from '../actions';
 
 const WALLET_INITIAL_STATE = {
   currencies: [],
-  expenses: [],
   totalSpending: 0,
 };
 
