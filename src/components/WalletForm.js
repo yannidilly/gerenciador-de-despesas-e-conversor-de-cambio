@@ -28,10 +28,20 @@ class WalletForm extends Component {
     });
   };
 
+  getActualExpenseId = () => {
+    const { expenses } = this.props;
+    if (expenses !== undefined) {
+      const lastExpenseId = expenses[expenses.length - 1].id;
+      return lastExpenseId + 1;
+    }
+    return 0;
+  };
+
   actualExpenseFormat = () => {
     const { value, description, currency, method, tag } = this.state;
+    const actualExpenseId = this.getActualExpenseId();
     const expenseFormated = {
-      id: '', // acrescentar id com base no id do último elemento +1 (para não repetir quando apagar elemento)
+      id: actualExpenseId,
       value,
       description,
       currency,
