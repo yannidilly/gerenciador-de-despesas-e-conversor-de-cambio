@@ -67,7 +67,10 @@ class WalletForm extends Component {
 
   calculateTotalSpending = () => {
     const { expenses } = this.props;
-    return 20;
+    const totalSpending = expenses
+      .map((expense) => Number.parseInt(expense.value, 10))
+      .reduce((acc, cur) => acc + cur);
+    return totalSpending;
   };
 
   addTotalExpensesInGlobalState = () => {
@@ -76,8 +79,8 @@ class WalletForm extends Component {
     dispatch(updateTotalSpending(totalSpending));
   };
 
-  onClickExpenseButton = () => {
-    this.addExpenseInGlobalState();
+  onClickExpenseButton = async () => {
+    await this.addExpenseInGlobalState();
     this.addTotalExpensesInGlobalState();
     this.setState({
       value: '',
