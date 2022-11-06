@@ -31,7 +31,7 @@ class WalletForm extends Component {
 
   getActualExpenseId = () => {
     const { expenses } = this.props;
-    if (expenses !== undefined) {
+    if (expenses.length !== 0) {
       const lastExpenseId = expenses[expenses.length - 1].id;
       return lastExpenseId + 1;
     }
