@@ -84,7 +84,7 @@ class WalletForm extends Component {
             data-testid="value-input"
             className="expense-value-register-input"
             name="value"
-            type="text"
+            type="number"
             value={ value }
             onChange={ this.onInputChange }
           />
