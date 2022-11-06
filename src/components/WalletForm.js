@@ -44,7 +44,7 @@ class WalletForm extends Component {
     const exchangeRates = await getCurrencies();
     const expenseFormated = {
       id: actualExpenseId,
-      value: value * 100,
+      value,
       description,
       currency,
       method,
@@ -68,8 +68,8 @@ class WalletForm extends Component {
   calculateTotalSpending = () => {
     const { expenses } = this.props;
     const totalSpending = expenses
-      .map((expense) => Number.parseInt(expense.value, 10))
-      .reduce((acc, cur) => acc + cur) / 100;
+      .map((expense) => Number.parseFloat(expense.value))
+      .reduce((acc, cur) => acc + cur);
     return totalSpending;
   };
 
@@ -84,6 +84,9 @@ class WalletForm extends Component {
     this.addTotalExpensesInGlobalState();
     this.setState({
       value: '',
+      currency: 'USD',
+      method: 'Dinheiro',
+      tag: 'Alimentação',
       description: '',
     });
   };

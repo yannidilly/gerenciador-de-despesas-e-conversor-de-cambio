@@ -19,7 +19,6 @@ class Header extends Component {
           </div>
           <div
             className="expense-info"
-            data-testid="total-field"
           >
             <p className="expense-text">Despesas totais:</p>
             <p
