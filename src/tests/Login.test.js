@@ -31,7 +31,15 @@ describe('Realiza os testes na página de login', () => {
     expect(loginButton).not.toBeDisabled();
   });
   test('Testa se o botão fica desabilitado quando a senha é preenchida com menos caracteres do que o mínimo necessário', () => {
-
+    renderWithRouterAndRedux(<Login />);
+    const emailInput = screen.queryByTestId('email-input');
+    const passwordInput = screen.queryByTestId('password-input');
+    userEvent.paste(emailInput, 'teste@teste.com');
+    userEvent.paste(passwordInput, '12345');
+    const loginButton = screen.queryByRole('button', { name: 'Entrar' });
+    expect(loginButton).toBeDisabled();
+    userEvent.paste(passwordInput, '6');
+    expect(loginButton).not.toBeDisabled();
   });
   test('Testa se o usuário é enviado para página /carteira ao clicar no botão de login após as informações estarem preenchidas', () => {
 
