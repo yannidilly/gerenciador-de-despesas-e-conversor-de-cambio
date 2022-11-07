@@ -3,20 +3,23 @@ import userEvent from '@testing-library/user-event';
 import { renderWithRouterAndRedux } from './helpers/renderWith';
 import Login from '../pages/Login';
 
+const emailInputTestId = 'email-input';
+const passwordInputTestId = 'password-input';
+
 describe('Realiza os testes na página de login', () => {
   test('Testa se existe o input para preencher o email e a senha', () => {
     renderWithRouterAndRedux(<Login />);
     const emailText = screen.queryByText('E-mail:');
     expect(emailText).toBeInTheDocument();
-    const emailInput = screen.queryByTestId('email-input');
+    const emailInput = screen.queryByTestId(emailInputTestId);
     expect(emailInput).toBeInTheDocument();
-    const passwordInput = screen.queryByTestId('password-input');
+    const passwordInput = screen.queryByTestId(passwordInputTestId);
     expect(passwordInput).toBeInTheDocument();
   });
   test('Testa se o botão fica desabilitado quando o email é preenchido com informações incorretas', () => {
     renderWithRouterAndRedux(<Login />);
-    const emailInput = screen.queryByTestId('email-input');
-    const passwordInput = screen.queryByTestId('password-input');
+    const emailInput = screen.queryByTestId(emailInputTestId);
+    const passwordInput = screen.queryByTestId(passwordInputTestId);
     userEvent.paste(emailInput, 'teste');
     userEvent.paste(passwordInput, '123456');
     const loginButton = screen.queryByRole('button', { name: 'Entrar' });
@@ -32,8 +35,8 @@ describe('Realiza os testes na página de login', () => {
   });
   test('Testa se o botão fica desabilitado quando a senha é preenchida com menos caracteres do que o mínimo necessário', () => {
     renderWithRouterAndRedux(<Login />);
-    const emailInput = screen.queryByTestId('email-input');
-    const passwordInput = screen.queryByTestId('password-input');
+    const emailInput = screen.queryByTestId(emailInputTestId);
+    const passwordInput = screen.queryByTestId(passwordInputTestId);
     userEvent.paste(emailInput, 'teste@teste.com');
     userEvent.paste(passwordInput, '12345');
     const loginButton = screen.queryByRole('button', { name: 'Entrar' });
