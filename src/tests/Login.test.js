@@ -45,6 +45,15 @@ describe('Realiza os testes na página de login', () => {
     expect(loginButton).not.toBeDisabled();
   });
   test('Testa se o usuário é enviado para página /carteira ao clicar no botão de login após as informações estarem preenchidas', () => {
-
+    const { history } = renderWithRouterAndRedux(<Login />);
+    const emailInput = screen.queryByTestId(emailInputTestId);
+    const passwordInput = screen.queryByTestId(passwordInputTestId);
+    userEvent.paste(emailInput, 'teste@teste.com');
+    userEvent.paste(passwordInput, '123456');
+    const loginButton = screen.queryByRole('button', { name: 'Entrar' });
+    expect(loginButton).not.toBeDisabled();
+    userEvent.click(loginButton);
+    const { pathname } = history.location;
+    expect(pathname).toBe('/carteira');
   });
 });
