@@ -52,6 +52,7 @@ describe('Realiza os testes na página de login', () => {
     userEvent.paste(passwordInput, '123456');
     const loginButton = screen.queryByRole('button', { name: 'Entrar' });
     expect(loginButton).not.toBeDisabled();
+    // quando faz toBe('/') aparece que o push no arquivo de login está undefined
     userEvent.click(loginButton);
     const { pathname } = history.location;
     expect(pathname).toBe('/carteira');
