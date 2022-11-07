@@ -64,7 +64,6 @@ class Login extends React.Component {
           <div>
             <button
               type="button"
-              name="login-button"
               disabled={ disableButton }
               onClick={ this.onClickButton }
             >
