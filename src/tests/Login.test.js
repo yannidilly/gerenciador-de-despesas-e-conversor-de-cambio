@@ -2,6 +2,7 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { renderWithRouterAndRedux } from './helpers/renderWith';
 import Login from '../pages/Login';
+import App from '../App';
 
 const emailInputTestId = 'email-input';
 const passwordInputTestId = 'password-input';
@@ -45,14 +46,13 @@ describe('Realiza os testes na página de login', () => {
     expect(loginButton).not.toBeDisabled();
   });
   test('Testa se o usuário é enviado para página /carteira ao clicar no botão de login após as informações estarem preenchidas', () => {
-    const { history } = renderWithRouterAndRedux(<Login />);
+    const { history } = renderWithRouterAndRedux(<App />);
     const emailInput = screen.queryByTestId(emailInputTestId);
     const passwordInput = screen.queryByTestId(passwordInputTestId);
-    userEvent.paste(emailInput, 'teste@teste.com');
-    userEvent.paste(passwordInput, '123456');
+    userEvent.type(emailInput, 'teste@teste.com');
+    userEvent.type(passwordInput, '123456');
     const loginButton = screen.queryByRole('button', { name: 'Entrar' });
     expect(loginButton).not.toBeDisabled();
-    // quando faz toBe('/') aparece que o push no arquivo de login está undefined
     userEvent.click(loginButton);
     const { pathname } = history.location;
     expect(pathname).toBe('/carteira');
