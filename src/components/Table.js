@@ -5,7 +5,7 @@ import '../style/Table.css';
 
 class Table extends Component {
   render() {
-    const { expenses, currencies } = this.props;
+    const { expenses } = this.props;
     return (
       <table className="expenses-table">
         <tbody>
