@@ -15,7 +15,7 @@ class Table extends Component {
     const { expenses } = this.props;
     const totalSpending = expenses
       .map((expense) => Number.parseFloat(this.currencyConverter(expense)))
-      .reduce((acc, cur) => acc + cur);
+      .reduce((acc, cur) => acc + cur, 0);
     return totalSpending;
   };
 
