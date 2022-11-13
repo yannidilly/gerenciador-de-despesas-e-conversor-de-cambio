@@ -40,6 +40,7 @@ class Table extends Component {
 const mapStateToProps = (globalState) => ({
   currencies: globalState.wallet.currencies,
   expenses: globalState.wallet.expenses,
+  totalSpending: globalState.wallet.totalSpending,
 });
 
 Table.propTypes = {
