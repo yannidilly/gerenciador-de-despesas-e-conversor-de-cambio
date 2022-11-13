@@ -1,4 +1,5 @@
-import { screen } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { renderWithRedux } from './helpers/renderWith';
 import mockData from './helpers/mockData';
 import WalletForm from '../components/WalletForm';
@@ -20,7 +21,20 @@ describe('Realiza testes para o componente WalletForm', () => {
       expect(currencies.children[index].textContent).toBe(Object.keys(mockData)[index]);
     }
   });
-  test('Testa se ao clicar no botão de Adicionar despesa, ela é adicionada no estado global (a despesa e a moeda)', () => {
-
+  test('Testa se ao clicar no botão de Adicionar despesa, os inputs do formulário são limpos', async () => {
+    const initialState = {
+      wallet: {
+        currencies: Object.keys(mockData),
+        expenses: [],
+      },
+    };
+    renderWithRedux(<WalletForm />, { initialState });
+    const valueInput = screen.queryByTestId('value-input');
+    const descriptionInput = screen.queryByTestId('description-input');
+    const addExpenseButton = screen.queryByRole('button', { name: 'Adicionar despesa' });
+    userEvent.type(valueInput, '100');
+    userEvent.type(descriptionInput, 'Teste');
+    userEvent.click(addExpenseButton);
+    await waitFor(() => expect(descriptionInput.value).toBe(''));
   });
 });
