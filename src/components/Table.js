@@ -27,7 +27,24 @@ class Table extends Component {
                 <th>{ expense.tag }</th>
                 <th>{ expense.method }</th>
                 <th>{ expense.value }</th>
-                <th>{ expense.currency }</th>
+                <th>
+                  {
+                    expense.exchangeRates[expense.currency].name
+                  }
+                </th>
+                <th>
+                  {
+                    expense.exchangeRates[expense.currency].ask
+                  }
+                </th>
+                <th>
+                  {
+                    (expense.value * expense.exchangeRates[expense.currency].ask)
+                      .toFixed(2)
+                  }
+                </th>
+                <th>Real</th>
+                <th>Editar/Excluir</th>
               </tr>
             ))
           }
@@ -38,7 +55,6 @@ class Table extends Component {
 }
 
 const mapStateToProps = (globalState) => ({
-  currencies: globalState.wallet.currencies,
   expenses: globalState.wallet.expenses,
   totalSpending: globalState.wallet.totalSpending,
 });
