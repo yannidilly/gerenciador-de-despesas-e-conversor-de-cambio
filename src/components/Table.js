@@ -26,7 +26,7 @@ class Table extends Component {
                 <th>{ expense.description }</th>
                 <th>{ expense.tag }</th>
                 <th>{ expense.method }</th>
-                <th>{ expense.value }</th>
+                <th>{ (expense.value * 1).toFixed(2) }</th>
                 <th>
                   {
                     expense.exchangeRates[expense.currency].name
