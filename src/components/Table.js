@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { removeExpense } from '../redux/actions';
 import '../style/Table.css';
 
 class Table extends Component {
-  onClickDeletButton = () => {
-
+  onClickDeletButton = (expenseId) => {
+    const { expenses, dispatch } = this.props;
+    const newExpensesArray = expenses.filter((expense) => expense.id !== expenseId);
+    dispatch(removeExpense(newExpensesArray));
   };
 
   render() {
@@ -59,7 +62,7 @@ class Table extends Component {
                   <button
                     type="button"
                     data-testid="delete-btn"
-                    onClick={ this.onClickDeletButton }
+                    onClick={ () => this.onClickDeletButton(expense.id) }
                   >
                     Excluir
                   </button>

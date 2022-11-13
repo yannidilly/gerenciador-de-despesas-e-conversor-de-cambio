@@ -3,6 +3,7 @@ import { getFormatedCurrencies } from '../../services/getCurrencies';
 export const LOGIN = 'LOGIN';
 export const GET_CURRENCIES = 'GET_CURRENCIES';
 export const ADD_EXPENSE = 'ADD_EXPENSE';
+export const REMOVE_EXPENSE = 'REMOVE_EXPENSE';
 export const UPDATE_TOTAL_SPENDING = 'UPDATE_TOTAL_SPENDING';
 
 export const login = (email) => ({
@@ -27,6 +28,11 @@ export const getCurrenciesAct = (dispatch) => async () => {
 export const addExpense = (expenses) => ({
   type: ADD_EXPENSE,
   expenses,
+});
+
+export const removeExpense = (newExpensesArray) => ({
+  type: REMOVE_EXPENSE,
+  newExpensesArray,
 });
 
 export const updateTotalSpending = (totalSpending) => ({
