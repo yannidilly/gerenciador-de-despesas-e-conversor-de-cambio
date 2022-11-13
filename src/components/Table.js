@@ -4,6 +4,10 @@ import { connect } from 'react-redux';
 import '../style/Table.css';
 
 class Table extends Component {
+  onClickDeletButton = () => {
+
+  };
+
   render() {
     const { expenses } = this.props;
     return (
@@ -46,7 +50,20 @@ class Table extends Component {
                   }
                 </td>
                 <td>Real</td>
-                <td>Editar/Excluir</td>
+                <td>
+                  <button
+                    type="button"
+                  >
+                    Editar
+                  </button>
+                  <button
+                    type="button"
+                    data-testid="delete-btn"
+                    onClick={ this.onClickDeletButton }
+                  >
+                    Excluir
+                  </button>
+                </td>
               </tr>
             ))
           }
