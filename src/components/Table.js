@@ -1,14 +1,35 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { removeExpense } from '../redux/actions';
+import { removeExpense, updateTotalSpending } from '../redux/actions';
 import '../style/Table.css';
 
 class Table extends Component {
-  onClickDeletButton = (expenseId) => {
+  currencyConverter = (expenseObj) => {
+    const { value, currency, exchangeRates } = expenseObj;
+    const convertedValue = value * exchangeRates[currency].ask;
+    return convertedValue;
+  };
+
+  calculateTotalSpending = () => {
+    const { expenses } = this.props;
+    const totalSpending = expenses
+      .map((expense) => Number.parseFloat(this.currencyConverter(expense)))
+      .reduce((acc, cur) => acc + cur);
+    return totalSpending;
+  };
+
+  addTotalExpensesInGlobalState = () => {
+    const { dispatch } = this.props;
+    const totalSpending = this.calculateTotalSpending();
+    dispatch(updateTotalSpending(totalSpending));
+  };
+
+  onClickDeletButton = async (expenseId) => {
     const { expenses, dispatch } = this.props;
     const newExpensesArray = expenses.filter((expense) => expense.id !== expenseId);
-    dispatch(removeExpense(newExpensesArray));
+    await dispatch(removeExpense(newExpensesArray));
+    this.addTotalExpensesInGlobalState();
   };
 
   render() {
