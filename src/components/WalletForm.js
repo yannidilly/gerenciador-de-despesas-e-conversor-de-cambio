@@ -103,6 +103,17 @@ class WalletForm extends Component {
     return (
       <form className="wallet-form">
         <div className="wallet-form-input-div">
+          <p>Descrição:</p>
+          <input
+            data-testid="description-input"
+            className="expense-register-input"
+            name="description"
+            type="text"
+            value={ description }
+            onChange={ this.onInputChange }
+          />
+        </div>
+        <div className="wallet-form-input-div">
           <p>Valor:</p>
           <input
             data-testid="value-input"
@@ -158,17 +169,6 @@ class WalletForm extends Component {
             <option>Transporte</option>
             <option>Saúde</option>
           </select>
-        </div>
-        <div className="wallet-form-input-div">
-          <p>Descrição:</p>
-          <input
-            data-testid="description-input"
-            className="expense-register-input"
-            name="description"
-            type="text"
-            value={ description }
-            onChange={ this.onInputChange }
-          />
         </div>
         <button
           type="button"
