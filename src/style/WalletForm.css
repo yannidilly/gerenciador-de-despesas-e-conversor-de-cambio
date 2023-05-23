@@ -39,7 +39,16 @@ p {
 select {
   background-color: #0d2d5f;
   color: #f5eeee;
-  border: 2px solid #f5eeee;
+  border: none;
   border-radius: 5px;
   font-size: 16px;
+}
+
+.add-button {
+  color: #f5eeee;
+  background-color: #0d2d5f;
+  border: 1px solid #f5eeee;
+  border-radius: 5px;
+  font-size: 18px;
+  padding: 6px;
 }

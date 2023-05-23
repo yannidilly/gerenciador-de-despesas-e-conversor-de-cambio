@@ -15,3 +15,16 @@ td {
   padding: 15px 0px;
 
 }
+
+.buttons-cell {
+  display: flex;
+  justify-content: space-around;
+}
+
+.buttons-cell button {
+  all: unset;
+}
+
+.buttons-cell img {
+  width: 25px;
+}

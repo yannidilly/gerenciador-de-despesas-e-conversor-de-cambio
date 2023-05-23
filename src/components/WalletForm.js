@@ -173,8 +173,9 @@ class WalletForm extends Component {
         <button
           type="button"
           onClick={ this.onClickExpenseButton }
+          className="add-button"
         >
-          Adicionar despesa
+          Registrar despesa
         </button>
       </form>
     );

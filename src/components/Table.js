@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { removeExpense, updateTotalSpending } from '../redux/actions';
 import '../style/Table.css';
+import EditIcon from '../icons/edit-icon.png';
+import DeletIcon from '../icons/delet-icon.png';
 
 class Table extends Component {
   currencyConverter = (expenseObj) => {
@@ -75,18 +77,20 @@ class Table extends Component {
                 </td>
                 <td>Real</td>
                 <td>
-                  <button
-                    type="button"
-                  >
-                    Editar
-                  </button>
-                  <button
-                    type="button"
-                    data-testid="delete-btn"
-                    onClick={ () => this.onClickDeletButton(expense.id) }
-                  >
-                    Excluir
-                  </button>
+                  <div className="buttons-cell">
+                    <button
+                      type="button"
+                    >
+                      <img src={ EditIcon } alt="editar" />
+                    </button>
+                    <button
+                      type="button"
+                      data-testid="delete-btn"
+                      onClick={ () => this.onClickDeletButton(expense.id) }
+                    >
+                      <img src={ DeletIcon } alt="deletar" />
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))
