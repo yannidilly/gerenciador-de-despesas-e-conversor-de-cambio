@@ -1,8 +1,9 @@
 .wallet-form {
   align-items: center;
-  background-color: rgb(119, 80, 51);
+  background-color: #e44b59;
   display: flex;
   justify-content: space-around;
+  height: 100px;
 }
 
 .wallet-form-input-div {
